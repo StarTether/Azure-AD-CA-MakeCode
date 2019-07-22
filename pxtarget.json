@@ -1,7 +1,7 @@
 {
-    "id": "sample",
-    "name": "sample",
-    "title": "MakeCode Editor Sample",
+    "id": "camakecode",
+    "name": "CaMakeCode",
+    "title": "MakeCode Editor for Azure AD Conditional Access Policies",
     "corepkg": "core",
     "cloud": {
         "workspace": false,

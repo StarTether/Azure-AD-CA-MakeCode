@@ -1,20 +1,38 @@
-/**
- * Basic functionalities.
- */
-//% color=#00BCD4 weight=100
-namespace turtle {
-
+//% color="#00278D"
+namespace prediacate {
+    export enum UserType {
+    //% block=administrator
+    Admin,
+    Guest,
+    Member
 }
-
-//% color=#D4BC00 weight=95
-namespace hare {
-
+//% block="user = $tp" group=predicates
+export function userIs(tp: UserType) {
+    return false
 }
-
-/**
- * Control flow
- */
-//% color=#FF5722 weight=90
-namespace control {
-
+//% block blockId=secureDevice
+export function secureDevice() {
+    return true
+}
+}
+//% color="#AA278D"
+namespace language {
+    /**
+    * This is a statement block with a parameter
+    */
+    //% block="require $arg1" inlineInputMode=external
+    export function require1(arg1: boolean) {
+    }
+    /**
+    * This is a statement block with a parameter
+    */
+    //% block="require $arg1|else require $arg2" inlineInputMode=external
+    export function require2(arg1: boolean, arg2: boolean) {
+    }
+    /**
+    * This is a statement block with a parameter
+    */
+    //% block="rule $name|when $cond" inlineInputMode=external
+    export function rule(name: string, cond: boolean, body: () => void) {
+    }
 }

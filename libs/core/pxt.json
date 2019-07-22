@@ -1,12 +1,10 @@
 {
     "name": "core",
-    "description": "A target sample for PXT",
+    "description": "A target file for PXT for Azure AD Conditional Access Policies",
     "files": [
         "README.md",
         "pxt-core.d.ts",
         "pxt-helpers.ts",
-        "enums.d.ts",
-        "sims.d.ts",
         "ns.ts"
     ],
     "testFiles": [
