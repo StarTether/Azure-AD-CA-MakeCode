@@ -1,6 +1,6 @@
 
 //% color="#AA278D"
-namespace logic {
+namespace action {
     //% block="allow with $arg1" inlineInputMode=external
     export function require1(arg1: boolean) {
     }
