@@ -112,9 +112,14 @@ namespace predicate {
         Any
     }
 
-    //% block="perform $action on $count $item within $within" group="Data Action"
+    //% block="perform $action||on $count|$item|within $within" group="Data Action"
     //% inlineInputMode=inline
-    export function dataAction(action: Actions, count: ActionScale, item: DataTarget, within: DataScope) {
+    //% expandableArgumentMode="enabled"
+    export function dataAction(
+        action: Actions,
+        count: ActionScale = null,
+        item: DataTarget = null,
+        within: DataScope = null) {
         return true;
     }
 
@@ -136,9 +141,14 @@ namespace predicate {
         Any
     }
 
-    //% block="perform $action on $count $item within $within" group="Admin Action"
+    //% block="perform $action||on $count|$item|within $within" group="Admin Action"
     //% inlineInputMode=inline
-    export function adminAction(action: Actions, count: ActionScale, item: AdminTarget, within: AdminScope) {
+    //% expandableArgumentMode="enabled"
+    export function adminAction(
+        action: Actions,
+        count: ActionScale = null,
+        item: AdminTarget = null,
+        within: AdminScope = null) {
         return true;
     }
 
