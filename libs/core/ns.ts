@@ -1,3 +1,21 @@
+
+//% color="#AA278D"
+namespace logic {
+    //% block="require $arg1" inlineInputMode=external
+    export function require1(arg1: boolean) {
+    }
+
+    //% block="require $arg1||or $arg2|or $arg3|or $arg4" inlineInputMode=external
+    //% speed.ar2=false speed.arg3=false speed.arg4=false
+    //% expandableArgumentMode="enabled"
+    export function require2(arg1: boolean, arg2: boolean = false, arg3: boolean = false, arg4: boolean = false) {
+    }
+
+    //% block="rule $name|when $cond" inlineInputMode=external
+    export function rule(name: string, cond: boolean, body: () => void) {
+    }
+}
+
 //% color="#00278D"
 namespace predicate {
     export enum UserType {
@@ -32,7 +50,7 @@ namespace cloudApp {
 }
 
 //% groups="['Risk','Location','ClientApp','Time']"
-namespace Conditions {
+namespace conditions {
     export enum UserRisk {
         High,
         Medium,
@@ -120,31 +138,6 @@ namespace Conditions {
     //% inlineInputMode=inline
     export function dateRange(zone: TimeZone, start: string, end: string) {
         return false;
-    }
-}
-
-
-//% color="#AA278D"
-namespace language {
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1" inlineInputMode=external
-    export function require1(arg1: boolean) {
-    }
-
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1|else require $arg2" inlineInputMode=external
-    export function require2(arg1: boolean, arg2: boolean) {
-    }
-
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="rule $name|when $cond" inlineInputMode=external
-    export function rule(name: string, cond: boolean, body: () => void) {
     }
 }
 
