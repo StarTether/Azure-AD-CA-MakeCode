@@ -107,37 +107,39 @@ namespace predicate {
         return false
     }
 
-    export enum Requirements {
-        //% block="Secure Device"
-        secureDevice,
-        //% block="Secure Application"
-        secureApplication,
-        //% block="Strong Credentials"
-        strongCredentials,
-        //% block="Elevated Monitoring"
-        elevatedMonitoring,
-        //% block="Allow"
-        allowNoRequirement,
-        //% block="Block"
-        denyAccess
-    }
-    //% block="$tp" blockId= requirementsList group=predicates
-    export function requirementIs(tp: Requirements) {
-        return false
-    }
+    //% block blockId=requirementsEnum
+     export enum Requirements {
+         //% block="Secure Device"
+         secureDevice,
+         //% block="Secure Application"
+         secureApplication,
+         //% block="Strong Credentials"
+         strongCredentials,
+         //% block="Elevated Monitoring"
+         elevatedMonitoring,
+         //% block="Allow"
+         allowNoRequirement,
+         //% block="Block"
+         denyAccess
+     }
+
+    //% block="$tp" blockId=requirementsList group=predicates
+     export function requirementIs(tp: Requirements) {
+         return false
+     }
 }
 //% color="#AA278D"
 namespace language {
+      /**
+      * This is a statement block with a parameter
+      */
+     //% block="require $arg1=requirementsList" inlineInputMode=external
+     export function require1(arg1: boolean) {
+     }
     /**
     * This is a statement block with a parameter
     */
-    //% block=“require $arg1=requirementsList” inlineInputMode=external
-    export function require1(arg1: boolean) {
-    }
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1|else require $arg2" inlineInputMode=external
+    //% block="require $arg1=requirementsList|else require $arg2=requirementsList" inlineInputMode=external
     export function require2(arg1: boolean, arg2: boolean) {
     }
     /**
