@@ -106,7 +106,7 @@ namespace predicate {
     export function adminScopeIs(tp: AdminScope) {
         return false
     }
-    //% block blockId=requirementsList
+
     export enum Requirements {
         //% block="Secure Device"
         secureDevice,
@@ -121,7 +121,7 @@ namespace predicate {
         //% block="Block"
         denyAccess
     }
-    //% block="$tp" group=predicates
+    //% block="$tp" blockId= requirementsList group=predicates
     export function requirementIs(tp: Requirements) {
         return false
     }
@@ -131,7 +131,7 @@ namespace language {
     /**
     * This is a statement block with a parameter
     */
-    //% block="require $arg1" inlineInputMode=external
+    //% block=“require $arg1=requirementsList” inlineInputMode=external
     export function require1(arg1: boolean) {
     }
     /**
