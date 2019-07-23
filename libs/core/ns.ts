@@ -1,172 +1,149 @@
 //% color="#00278D"
 namespace predicate {
-    export enum UserType {
-        //% block=administrator
-        Admin,
-        Guest,
-        Member
-    }
-
-    //% block="user = $tp" group=predicates
-    export function userIs(tp: UserType) {
-        return false
-    }
-
-    //% block blockId=secureDevice
-    export function secureDevice() {
-        return true
-    }
+export enum UserType {
+//% block=Administrator
+Admin,
+Guest,
+Member
 }
-
-//% color="#00AA8D"
-namespace cloudApp {
-    //% block
-    export function isAny() {
-        return true;
-    }
-
-    //% block
-    export function is(name: string) {
-        return true;
-    }
+//% color="#00278D"
+export enum Actions {
+Any,
+View,
+Create,
+Update,
+Download,
+Delete
 }
-
-//% groups="['Risk','Location','ClientApp','Time']"
-namespace Conditions {
-    export enum UserRisk {
-        High,
-        Medium,
-        Low,
-        NoRisk
-    }
-
-    //% block
-    //% group="Risk"
-    export function userRisk(risk: UserRisk[]) {
-    }
-
-    // export enum Platforms {
-    //     Any,
-    //     Android,
-    //     iOS,
-    //     WindowsPhone,
-    //     Windows,
-    //     macOS
-    // }
-
-    export enum Location {
-        Anywhere,
-        TrustedLocations,
-        DisallowedCountries
-    }
-
-    //% block
-    //% group="Location"
-    export function from(location: Location[]) {
-    }
-
-    //% block
-    //% group="ClientApp"
-    export function viaBrowser() {
-        return true;
-    }
-
-    //% block
-    //% group="ClientApp"
-    export function viaMobileOrDesktopApp(allowModernApps: boolean, exchangeActiveSync: boolean, otherClients: boolean) {
-        // TODO: "apply policy only to supported platforms"
-        return true;
-    }
-
-    //% block
-    //% group="Time"
-    export function whenever() {
-        return true;
-    }
-
-    export enum TimeZone {
-        PST,
-        MST,
-        CST,
-        EST
-    }
-
-    export enum DaysOfWeek {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
-    }
-
-    //% block="On these days $days from $start to $end in $zone time zone"
-    //% group="Time"
-    //% start.defl="12:00 AM"
-    //% end.defl="12:00 AM"
-    //% inlineInputMode=inline
-    export function daysOfWeekWithTime(zone: TimeZone, days: DaysOfWeek[], start: string, end: string) {
-        return false;
-    }
-
-    //% block="On these days $days at any time of day in $zone time zone"
-    //% group="Time"
-    export function daysOfWeekAnyTime(zone: TimeZone, days: DaysOfWeek[]) {
-        return false;
-    }
-
-    //% block
-    //% inlineInputMode=inline
-    export function dateRange(zone: TimeZone, start: string, end: string) {
-        return false;
-    }
+//% color="#00278D"
+export enum Scale {
+Any,
+One,
+Several
 }
-
-
+//% color="#00278D"
+export enum ActionType {
+//% block=Data Action
+DataTask,
+//% block=Admin Task
+AdminTask
+}
+//% color="#00278D"
+export enum DataTarget {
+Any,
+File,
+Email,
+IM,
+Other
+}
+//% color="#00278D"
+export enum DataScope {
+M365,
+Salesforce,
+Box,
+PowerBI,
+Any
+}
+//% color="#00278D"
+export enum AdminTarget {
+UserAccounts,
+Identity,
+Policy,
+Apps,
+Any
+}
+//% color="#00278D"
+export enum AdminScope {
+M365,
+AzureAD,
+Any
+}
+//% block blockId=secureDevice
+export function secureDevice() {
+return true
+}
+//% block blockId=secureApplication
+export function secureApplication() {
+return true
+}
+//% block blockId=strongCredentials
+export function strongCredentials() {
+return true
+}
+//% block blockId=elevatedMonitoring
+export function elevatedMonitoring() {
+return true
+}
+//% block blockId=allowNoRequirement
+export function allowNoRequirement() {
+return true
+}
+//% block blockId=denyAccess
+export function denyAccess() {
+return true
+}
+//% block="User = $tp" group=predicates
+export function userIs(tp: UserType) {
+return false
+}
+//% block="Action Type = $tp" group=predicates
+export function actionIs(tp: ActionType) {
+return false
+}
+//% block="Acting on = $tp" group=predicates
+export function scaleIs(tp: Scale) {
+return false
+}
+//% block="Target = $tp" group=predicates
+export function dataTargetIs(tp: DataTarget) {
+return false
+}
+//% block="Scope = $tp" group=predicates
+export function dataScopeIs(tp: DataScope) {
+return false
+}
+//% block="Scope = $tp" group=predicates
+export function adminScopeIs(tp: AdminScope) {
+return false
+}
+//% block blockId=requirementsList
+export enum Requirements {
+//% block="Secure Device"
+secureDevice,
+//% block="Secure Application"
+secureApplication,
+//% block="Strong Credentials"
+strongCredentials,
+//% block="Elevated Monitoring"
+elevatedMonitoring,
+//% block="Allow"
+allowNoRequirement,
+//% block="Block"
+denyAccess
+}
+//% block="$tp" group=predicates
+export function requirementIs(tp: Requirements) {
+return false
+}
+}
 //% color="#AA278D"
 namespace language {
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1" inlineInputMode=external
-    export function require1(arg1: boolean) {
-    }
-
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1|else require $arg2" inlineInputMode=external
-    export function require2(arg1: boolean, arg2: boolean) {
-    }
-
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="rule $name|when $cond" inlineInputMode=external
-    export function rule(name: string, cond: boolean, body: () => void) {
-    }
+/**
+* This is a statement block with a parameter
+*/
+//% block="require $arg1" inlineInputMode=external
+export function require1(arg1: boolean) {
 }
-
-//% color="#0027AA"
-namespace duration {
-    export enum Unit {
-        Hours,
-        Days
-    }
-
-    //% block
-    export function frequency(value: number, unit: Unit) {
-    }
-
-    export enum Persistance {
-        Always,
-        Never
-    }
-
-    //% block
-    export function persist(value: Persistance) {
-    }
+/**
+* This is a statement block with a parameter
+*/
+//% block="require $arg1|else require $arg2" inlineInputMode=external
+export function require2(arg1: boolean, arg2: boolean) {
 }
-
-// TODO: Session "Use app enforced restirctions" and "Use Conditional Access App Control"
+/**
+* This is a statement block with a parameter
+*/
+//% block="rule $name|when $cond" inlineInputMode=external
+export function rule(name:string, cond: boolean, body: ()=>void) {
+}
+}
