@@ -1,26 +1,23 @@
 
 //% color="#AA278D"
 namespace outcome {
-    //% block="allow with $arg1" inlineInputMode=external
-    export function require1(arg1: boolean) {
-    }
 
-    //% block="allow|| with $arg1|or $arg2|or $arg3|or $arg4" inlineInputMode=external
-    //% expandableArgumentMode="enabled"
-    export function require2(
-        arg1: Requirements = null, //Requirements.secureDevice,
-        arg2: Requirements = null,
-        arg3: Requirements = null,
-        arg4: Requirements = null) {
-    }
-
-    //% block="rule $name|when $cond" inlineInputMode=external
-    export function rule(name: string, cond: boolean, body: () => void) {
+    //% block="allow"
+    export function allow() {
     }
 
     //% block="block" blockId=denyAccess
     export function denyAccess() {
-    }    
+    }
+    
+    //% block="require $arg1=single(secureDevice)||or $arg2=single(secureDevice)|or $arg3=single(secureDevice)|or $arg4=single(secureDevice)" inlineInputMode=external
+    //% expandableArgumentMode="enabled"
+    export function requirements(
+        arg1: Requirement = null,
+        arg2: Requirement = null,
+        arg3: Requirement = null,
+        arg4: Requirement = null) {
+    }
 
     export enum Requirements {
         //% block="Secure Device"
@@ -31,6 +28,21 @@ namespace outcome {
         strongCredentials,
         //% block="Elevated Monitoring"
         elevatedMonitoring
+    }
+
+    export class Requirement {}
+
+    //% block="$required1"
+    //% blockId="single"
+    export function single(required1: Requirements): Requirement {
+        return undefined;
+    }
+
+    //% block="$require1 and $require2||and $require3|and $require4"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function and(require1: Requirements, require2: Requirements, require3: Requirements = null, require4: Requirements = null): Requirement {
+        return undefined;
     }
 }
 
@@ -144,18 +156,11 @@ namespace predicate {
         EST
     }
 
-    export enum DaysOfWeek {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
-    }
-
-    //% block="Days of Week: Sunday $sunday, Monday $monday, Tuesday $tuesday, Wednesday $wednesday, Thursday $thursday, Friday $friday, Staurday"
+    export class DaysOfWeek {}
+    //% block="Sunday $sunday, Monday $monday, Tuesday $tuesday, Wednesday $wednesday, Thursday $thursday, Friday $friday, Staurday"
+    //% blockId=DaysOfWeek
     //% inlineInputMode=inline
+    //% group="Time"
     export function dayOfWeek(
         sunday: boolean,
         monday: boolean,
@@ -163,28 +168,36 @@ namespace predicate {
         wednesday: boolean,
         thursday: boolean,
         friday: boolean,
-        saturday: boolean) {
-        return true;
+        saturday: boolean): DaysOfWeek {
+        return undefined;
     }
     //% block
-    export function weekdays() {
-        return true;
+    //% blockId=Weekdays
+    //% group="Time"
+    export function weekdays(): DaysOfWeek {
+        return undefined;
     }
     //% block
-    export function weekends() {
-        return true;
+    //% group="Time"
+    export function weekends(): DaysOfWeek {
+        return undefined;
+    }
+    //% block
+    //% group="Time"
+    export function anyDay(): DaysOfWeek {
+        return undefined;
     }
 
-    //% block="On these days $days from $start to $end in $zone time zone"
+    //% block="On $days=Weekdays from $start to $end in $zone time zone"
     //% group="Time"
     //% start.defl="12:00 AM"
     //% end.defl="12:00 AM"
     //% inlineInputMode=inline
-    export function daysOfWeekWithTime(zone: TimeZone, days: boolean, start: string, end: string) {
+    export function daysOfWeekWithTime(zone: TimeZone, days: DaysOfWeek, start: string, end: string) {
         return false;
     }
 
-    //% block="On these days $days at any time of day in $zone time zone"
+    //% block="On $days at any time of day in $zone time zone"
     //% group="Time"
     export function daysOfWeekAnyTime(zone: TimeZone, days: DaysOfWeek[]) {
         return false;
