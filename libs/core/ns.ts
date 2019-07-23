@@ -3,10 +3,12 @@
 namespace outcome {
 
     //% block="allow"
+    //% color="#09f018"
     export function allow() {
     }
 
     //% block="block" blockId=denyAccess
+    //% color="#e40c2b"
     export function denyAccess() {
     }
     
@@ -153,10 +155,17 @@ namespace predicate {
     }
 
     /* BEGIN Time */
+    export class TimeSpan {}
+    //% block="Time-limited sign-ins: $time"
+    //% group="Time"
+    export function timeLimited(time: TimeSpan) {
+        return true;
+    }
+
     //% block
     //% group="Time"
-    export function whenever() {
-        return true;
+    export function whenever() : TimeSpan {
+        return undefined;
     }
 
     export enum TimeZone {
@@ -203,68 +212,122 @@ namespace predicate {
     //% start.defl="12:00 AM"
     //% end.defl="12:00 AM"
     //% inlineInputMode=inline
-    export function daysOfWeekWithTime(zone: TimeZone, days: DaysOfWeek, start: string, end: string) {
-        return false;
+    export function daysOfWeekWithTime(zone: TimeZone, days: DaysOfWeek, start: string, end: string): TimeSpan {
+        return undefined;
     }
 
     //% block="On $days at any time of day in $zone time zone"
     //% group="Time"
-    export function daysOfWeekAnyTime(zone: TimeZone, days: DaysOfWeek[]) {
-        return false;
+    export function daysOfWeekAnyTime(zone: TimeZone, days: DaysOfWeek[]):TimeSpan {
+        return undefined;
     }
 
     //% block
     //% inlineInputMode=inline
-    export function dateRange(zone: TimeZone, start: string, end: string) {
-        return false;
+    export function dateRange(zone: TimeZone, start: string, end: string):TimeSpan {
+        return undefined;
     }
-}
 
-//% groups="['Risk','Location','ClientApp','Time']"
-namespace conditions {
-    export enum UserRisk {
+    /* BEGIN User Risk */
+    export enum UserRiskLevel {
         High,
         Medium,
         Low,
         NoRisk
     }
 
-    //% block
+    export class UserRiskCollection {}
+
+    //% block="User risk is: $riskSettings"
     //% group="Risk"
-    export function userRisk(risk: UserRisk[]) {
+    export function userRisk(riskSettings: UserRiskCollection) {
+        return true;
     }
 
-    // export enum Platforms {
-    //     Any,
-    //     Android,
-    //     iOS,
-    //     WindowsPhone,
-    //     Windows,
-    //     macOS
-    // }
+    //% block="$risk"
+    //% group="Risk"
+    export function single(risk: UserRiskLevel): UserRiskCollection{
+        return undefined;
+    }
 
-    export enum Location {
+    //% block="$risk or above"
+    //% group="Risk"
+    export function atOrAbove(risk: UserRiskLevel): UserRiskCollection {
+        return undefined;
+    }
+
+    //% block="high $high||medium $medium|low $low|no risk $noRisk"
+    //% inlineInputMode=inline
+    //% group="Risk"
+    //% expandableArgumentMode="enabled"
+    export function riskLevels(
+        high: boolean = false,
+        medium: boolean = false,
+        low: boolean = false,
+        noRisk: boolean = false): UserRiskCollection {
+        return undefined;
+    }
+
+    /* BEGIN Location */
+    export enum NamedNetwork {
         Anywhere,
         TrustedLocations,
         DisallowedCountries
     }
 
-    //% block
+    export class Location {}
+
+    //% block="logging in from $location"
     //% group="Location"
-    export function from(location: Location[]) {
+    export function from(location: Location) {
+        return true;
     }
 
-    //% block
-    //% group="ClientApp"
-    export function viaBrowser() {
+    //% block="$location1||or $location2|or $location3|or $location4"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    //% group="Location"
+    export function fromOr(
+        location1: NamedNetwork,
+        location2: NamedNetwork,
+        location3: NamedNetwork,
+        location4: NamedNetwork): Location {
+        return undefined;
+    }
+
+    /* BEGIN Client Apps */
+
+    export class ClientAppConfig {}
+
+    //% block="logging in using $appConfig"
+    //% group="Client App"
+    export function isSupportedClient(appConfig: ClientAppConfig) {
         return true;
     }
 
     //% block
-    //% group="ClientApp"
-    export function viaMobileOrDesktopApp(allowModernApps: boolean, exchangeActiveSync: boolean, otherClients: boolean) {
+    //% group="Client App"
+    export function viaBrowser(): ClientAppConfig {
+        return true;
+    }
+
+    export class MobileOrDesktopApp {}
+
+    //% block="Moden apps = $allowModernApps|Exchange ActiveSync = $|Other Clients = $otherClients"
+    //% blockId=viaMobileOrDesktopApp
+    //% group="Client App"
+    export function viaMobileOrDesktopApp(allowModernApps: boolean, exchangeActiveSync: boolean, otherClients: boolean): MobileOrDesktopApp {
         // TODO: "apply policy only to supported platforms"
-        return true;
+        return undefined;
+    }
+
+    //% block="Allow from browsers||or $mobileOrDesktop=viaMobileOrDesktopApp"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    //% group="Client App"
+    export function config(viaBrowser: boolean, mobileOrDesktop: MobileOrDesktopApp): ClientAppConfig{
+        // TODO: "apply policy only to supported platforms"
+        return undefined;
     }
 }
 
