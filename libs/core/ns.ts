@@ -1,19 +1,24 @@
 
 //% color="#AA278D"
 namespace logic {
-    //% block="require $arg1" inlineInputMode=external
+    //% block="allow with $arg1" inlineInputMode=external
     export function require1(arg1: boolean) {
     }
 
-    //% block="require $arg1||or $arg2|or $arg3|or $arg4" inlineInputMode=external
-    //% speed.ar2=false speed.arg3=false speed.arg4=false
+    //% block="allow|| with $arg1|or $arg2|or $arg3|or $arg4" inlineInputMode=external
+    //% speed.arg1=false speed.arg2=false speed.arg3=false speed.arg4=false
     //% expandableArgumentMode="enabled"
-    export function require2(arg1: boolean, arg2: boolean = false, arg3: boolean = false, arg4: boolean = false) {
+    export function require2(arg1: boolean = false, arg2: boolean = false, arg3: boolean = false, arg4: boolean = false) {
     }
 
     //% block="rule $name|when $cond" inlineInputMode=external
     export function rule(name: string, cond: boolean, body: () => void) {
     }
+
+    //% block="block" blockId=denyAccess
+    export function denyAccess() {
+        return true
+    }    
 }
 
 //% color="#00278D"
