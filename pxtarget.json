@@ -11,13 +11,13 @@
         "libs/core"
     ],
     "runtime": {
-      "mathBlocks": true,
+      "mathBlocks": false,
       "loopsBlocks": true,
       "logicBlocks": true,
-      "variablesBlocks": true,
+      "variablesBlocks": false,
       "textBlocks": false,
       "functionBlocks": false,
-      "listsBlocks": false 
+      "listsBlocks": false
     },
     "simulator": {
         "autoRun": true
@@ -42,8 +42,8 @@
         "monacoToolbox": true,
         "invertedMenu": true,
         "showHomeScreen": true,
-        "homeScreenHero": "./static/hero.png",        
-        "blocklyOptions": { 
+        "homeScreenHero": "./static/hero.png",
+        "blocklyOptions": {
             "grid": {
                 "spacing": 45,
                 "length": 7,
