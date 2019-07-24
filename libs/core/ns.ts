@@ -69,11 +69,14 @@ namespace predicate {
     export enum AdminTarget {
         //% block="Any Admin Task"
         Any,
+        //% block="A User Account"
         UserAccounts,
+        //% block="An Identity Admin Operation"
         Identity,
+        //% block="A Policy Admin Operation"
         Policy,
+        //% block="Any Application"
         Apps
-
     }
     //% color="#00278D"
     export enum AdminScope {
@@ -96,7 +99,7 @@ namespace predicate {
         return true;
     }
 
-    //% block="User = $user||performs $item|within $within" group="Administrative Action"
+    //% block="User = $user||accesses $item|within $within" group="Administrative Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function adminAction(
