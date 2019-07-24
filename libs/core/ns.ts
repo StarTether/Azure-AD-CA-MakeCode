@@ -43,7 +43,11 @@ namespace outcome {
     //% block="$require1 and $require2||and $require3|and $require4"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
-    export function and(require1: Requirements, require2: Requirements, require3: Requirements = null, require4: Requirements = null): Requirement {
+    export function and(
+        require1: Requirements,
+        require2: Requirements,
+        require3: Requirements = null,
+        require4: Requirements = null): Requirement {
         return undefined;
     }
 }
@@ -256,15 +260,15 @@ namespace predicate {
         return undefined;
     }
 
-    //% block="high $high||medium $medium|low $low|no risk $noRisk"
+    //% block="$arg1||or $arg2|or $arg3|or $arg4"
     //% inlineInputMode=inline
     //% group="Risk"
     //% expandableArgumentMode="enabled"
     export function riskLevels(
-        high: boolean = false,
-        medium: boolean = false,
-        low: boolean = false,
-        noRisk: boolean = false): UserRiskCollection {
+        arg1: UserRiskLevel = UserRiskLevel.High,
+        arg2: UserRiskLevel,
+        arg3: UserRiskLevel,
+        arg4: UserRiskLevel): UserRiskCollection {
         return undefined;
     }
 
@@ -352,4 +356,91 @@ namespace duration {
     }
 }
 
-// TODO: Session "Use app enforced restirctions" and "Use Conditional Access App Control"
+// TODO: Session "Use app enforced restrictions" and "Use Conditional Access App Control"
+
+/**
+Device Security Definition
+
+If device platform = iOS or Android or Mac
+    Then Require Compliant device
+    And Require Device Risk < Medium
+Else if device platform = Windows
+    Then Require AADJ
+    And Device Risk < Medium
+Else 
+    Return False
+ */
+//% block="Device Security"
+namespace deviceSecurity {
+    export enum Platform {
+        Windows,
+        WindowsPhone,
+        iOS,
+        Android,
+        MacOS,
+        Other
+    }
+
+    export class Device {}
+
+    //% block
+    export function deviceIs(device: Device) {
+        return true;
+    }
+
+    //% block
+    export function any(): Device {
+        return undefined;
+    }
+
+    //% block="$device1||or $device2|or $device3|or $device4|or $device5"
+    //% blockId=deviceSelection
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function or(
+        device1: Platform = Platform.Windows,
+        device2: Platform | null = null,
+        device3: Platform | null = null,
+        device4: Platform | null = null,
+        device5: Platform | null = null): Device {
+        return undefined;
+    }
+}
+/**
+
+Device Risk Definition
+
+If device platform = Windows
+    Return Windows Defender ATP health status
+Else
+    Return Intune device health status
+*/
+namespace deviceRisk {
+}
+
+/*
+Application Security
+
+If device platform = iOS or Android
+    If App supports MAM
+        Return App Compliance Status
+Else
+    Return false
+ */
+
+//% block="Application Security"
+namespace applicationSecurity {
+
+    export class MamSupportStatus {}
+
+    //% block="$device=deviceSelection and $requiresMam=mamSupport"
+    export function isCompliant(device: deviceSecurity.Device, requiresMam: MamSupportStatus): boolean {
+        return true;
+    }
+
+    //% block="$app supports MAM"
+    //% blockId=mamSupport
+    export function supportsMam(app: predicate.CloudApp): MamSupportStatus {
+        return undefined;
+    }
+}
