@@ -118,7 +118,7 @@ namespace predicate {
         Any
     }
 
-    //% block="$user||performs $action|on $count|$item|within $within" group="Data Action"
+    //% block="$user||performs $action|on $count $item|within $within" group="Data Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function dataAction(
@@ -148,7 +148,7 @@ namespace predicate {
         Any
     }
 
-    //% block="$user||performs $action|on $count|$item|within $within" group="Admin Action"
+    //% block="%user||performs %action|on %count %item|within %within" group="Admin Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function adminAction(
@@ -268,9 +268,9 @@ namespace predicate {
     //% expandableArgumentMode="enabled"
     export function riskLevels(
         arg1: UserRiskLevel = UserRiskLevel.High,
-        arg2: UserRiskLevel,
-        arg3: UserRiskLevel,
-        arg4: UserRiskLevel): UserRiskCollection {
+        arg2: UserRiskLevel | null = null,
+        arg3: UserRiskLevel | null = null,
+        arg4: UserRiskLevel | null = null): UserRiskCollection {
         return undefined;
     }
 
