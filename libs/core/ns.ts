@@ -115,9 +115,27 @@ namespace predicate {
         return false
     }
     //% block="Action Type = $tp" group="Unique Predicates"
-    export function actionIs(tp: ActionType) {
+    export function actionTypeIs(tp: ActionType) {
         return false
     }
+
+    //% block="User Performs $tp" group="Unique Predicates"
+    export function dataActionIs(tp: Actions) {
+        return false
+    }
+
+    //% block="User performs $action |on $count $item|within $within" group="Data Action"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function detailedDataActionIs(
+        action: Actions,
+        count: Scale = null,
+        item: DataTarget = null,
+        within: DataScope = null) {
+        return true;
+    }
+
+
     //% block="Acting on = $tp" group="Unique Predicates"
     export function scaleIs(tp: Scale) {
         return false
@@ -303,7 +321,7 @@ namespace policyRequirements {
      }
 
 
-    //% block="combination of $require1 and $require2||and $require3|and $require4" group="Individual Requirement Predicates"
+    //% block="a combination of $require1 and $require2||and $require3|and $require4" group="Individual Requirement Predicates"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function and(
