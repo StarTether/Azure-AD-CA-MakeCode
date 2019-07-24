@@ -4,7 +4,8 @@
 [
     {
         "name": "Simple policy samples to get you started",
-        "url": "/examples"
+        "url": "/examples",
+        "imageUrl": "/docs/static/Example1.png"
     },
     {
         "name": "More sophisticated policy samples",
