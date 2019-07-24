@@ -464,16 +464,12 @@
          
     <div class="ui text">
         <h1 id="square">Square</h1><p>A simple example</p>
-<pre><code class="lang-blocks">if (predicate.adminAction(adminUserType.GlobalAdmin)) {
+<pre><code class="lang-blocks">if (predicate.from(predicate.fromOr(NamedNetwork.OffCorp))) {
     policyRequirements.requirements(
-    policyRequirements.and(requirementsEnum.strongCredentials, requirementsEnum.elevatedMonitoring)
+    policyRequirements.singleRequirement(requirementsEnum.strongCredentials)
     )
-    if (predicate.from(predicate.fromOr(NamedNetwork.OffCorp))) {
-        policyRequirements.requirements(
-        policyRequirements.singleRequirement(requirementsEnum.secureDevice)
-        )
-    }
-}</code></pre>
+}
+</code></pre>
 
     </div>
 
