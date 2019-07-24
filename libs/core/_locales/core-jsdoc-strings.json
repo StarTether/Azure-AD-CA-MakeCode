@@ -125,9 +125,7 @@
   "String.substr": "Return a substring of the current string.",
   "String.substr|param|length": "number of characters to extract",
   "String.substr|param|start": "first character index; can be negative from counting from the end, eg:0",
-  "language.require1": "This is a statement block with a parameter",
-  "language.require2": "This is a statement block with a parameter",
-  "language.rule": "This is a statement block with a parameter",
   "parseFloat": "Convert a string to a number.",
-  "parseInt": "Convert a string to an integer."
+  "parseInt": "Convert a string to an integer.",
+  "policyRequirements.requirements": "This is a statement block with a parameter"
 }

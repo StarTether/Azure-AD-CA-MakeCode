@@ -1,86 +1,202 @@
 //% color="#00278D"
+//% block="Access Details"
 namespace predicate {
-    export enum UserType {
-        //% block=administrator
-        Admin,
+    export enum regularUserType {
+        Employee,
+        //% block="External Collaborator"
         Guest,
-        Member
+        Contractor,
+        Vendor,
+        //% block="First Line Worker"
+        FirstLine,
+        Customer
+    }
+    export enum adminUserType {
+        //% block="Global Administrator"
+        GlobalAdmin,
+        //% block="User Administrator"
+        UserAdmin,
+        //% block="Policy Administrator"
+        PolicyAdmin,
+        //% block="Application Administrator"
+        ApplicationAdmin,
+        //% block="Security Administrator"
+        SecurityAdmin
+    }
+    //% color="#00278D"
+    export enum Actions {
+      //% block="Any Action"
+        Any,
+        View,
+        Create,
+        Update,
+        Download,
+        Delete
+    }
+    //% color="#00278D"
+    export enum Scale {
+        //% block="Any number of"
+        Any,
+        One,
+        Many
+    }
+    //% color="#00278D"
+    export enum ActionType {
+        //% block="Data Action"
+        DataTask,
+        //% block="Admin Task"
+        AdminTask
+    }
+    //% color="#00278D"
+    export enum DataTarget {
+        //% block="Resources"
+        Any,
+        File,
+        Email,
+        IM,
+        Other
+    }
+    //% color="#00278D"
+    export enum DataScope {
+        M365,
+        Salesforce,
+        Box,
+        PowerBI,
+        //% block="Any Application"
+        Any
+    }
+    //% color="#00278D"
+    export enum AdminTarget {
+        //% block="Any Admin Task"
+        Any,
+        //% block="A User Account"
+        UserAccounts,
+        //% block="An Identity Admin Operation"
+        Identity,
+        //% block="A Policy Admin Operation"
+        Policy,
+        //% block="Any Application"
+        Apps
+    }
+    //% color="#00278D"
+    export enum AdminScope {
+        M365,
+        //% block="Azure Active Directory"
+        AzureAD,
+        //% block="Any Context"
+        Any
     }
 
-    //% block="user = $tp" group=predicates
-    export function userIs(tp: UserType) {
+    //% block="User = $user||performs $action |on $count $item|within $within" group="Data Action"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function dataAction(
+        user: regularUserType,
+        action: Actions,
+        count: Scale = null,
+        item: DataTarget = null,
+        within: DataScope = null) {
+        return true;
+    }
+
+    //% block="User = $user||accesses $item|within $within" group="Administrative Action"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function adminAction(
+        user: adminUserType,
+        item: AdminTarget = null,
+        within: AdminScope = null) {
+        return true;
+    }
+
+    //% block="User = $tp" group="Unique Predicates"
+    export function userIs(tp: regularUserType) {
+        return false
+    }
+    //% block="Admin = $tp" group="Unique Predicates"
+    export function adminIs(tp: adminUserType) {
+        return false
+    }
+    //% block="Action Type = $tp" group="Unique Predicates"
+    export function actionTypeIs(tp: ActionType) {
         return false
     }
 
-    //% block blockId=secureDevice
-    export function secureDevice() {
-        return true
+    //% block="User Performs $tp" group="Unique Predicates"
+    export function dataActionIs(tp: Actions) {
+        return false
     }
-}
 
-//% color="#00AA8D"
-namespace cloudApp {
-    //% block
-    export function isAny() {
+    //% block="User performs $action |on $count $item|within $within" group="Data Action"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function detailedDataActionIs(
+        action: Actions,
+        count: Scale = null,
+        item: DataTarget = null,
+        within: DataScope = null) {
         return true;
     }
 
-    //% block
-    export function is(name: string) {
-        return true;
-    }
-}
 
-//% groups="['Risk','Location','ClientApp','Time']"
-namespace Conditions {
-    export enum UserRisk {
-        High,
-        Medium,
-        Low,
-        NoRisk
+    //% block="Acting on = $tp" group="Unique Predicates"
+    export function scaleIs(tp: Scale) {
+        return false
     }
-
-    //% block
-    //% group="Risk"
-    export function userRisk(risk: UserRisk[]) {
+    //% block="Resource = $tp" group="Unique Predicates"
+    export function dataTargetIs(tp: DataTarget) {
+        return false
+    }
+    //% block="Data Scope = $tp" group="Unique Predicates"
+    export function dataScopeIs(tp: DataScope) {
+        return false
+    }
+    //% block="Admin Scope = $tp" group="Unique Predicates"
+    export function adminScopeIs(tp: AdminScope) {
+        return false
     }
 
-    // export enum Platforms {
-    //     Any,
-    //     Android,
-    //     iOS,
-    //     WindowsPhone,
-    //     Windows,
-    //     macOS
-    // }
+  /* BEGIN Location */
+  export enum NamedNetwork {
+      //% block="Trusted Locations"
+      TrustedLocations,
+      //% block="Outside Work"
+      OffCorp,
+      //% block="Untrusted Locations"
+      UntrustedLocations,
+      //% block="Uncharacteristic Locations"
+      RiskyLocations,
+      //% block="From Disallowed Countries"
+      DisallowedCountries
+  }
 
-    export enum Location {
-        Anywhere,
-        TrustedLocations,
-        DisallowedCountries
-    }
+  export class Location {}
 
-    //% block
-    //% group="Location"
-    export function from(location: Location[]) {
-    }
 
-    //% block
-    //% group="ClientApp"
-    export function viaBrowser() {
-        return true;
-    }
+  //% block="Logging in from $location=locationsList" group="Location"
+  export function from(location: Location) {
+      return true;
+  }
 
-    //% block
-    //% group="ClientApp"
-    export function viaMobileOrDesktopApp(allowModernApps: boolean, exchangeActiveSync: boolean, otherClients: boolean) {
-        // TODO: "apply policy only to supported platforms"
-        return true;
-    }
 
-    //% block
+  //% block="$location1||or $location2|or $location3|or $location4"
+  //% blockId="locationsList"
+  //% inlineInputMode=inline
+  //% expandableArgumentMode="enabled"
+  //% group="Unique Predicates"
+  export function fromOr(
+      location1: NamedNetwork,
+      location2: NamedNetwork,
+      location3: NamedNetwork,
+      location4: NamedNetwork): Location {
+      return undefined;
+  }
+
+  /* BEGIN Time */
+    export class TimeSpan {}
+    //% block="Logging in during: $time=daysOfWeekWithTime"
     //% group="Time"
-    export function whenever() {
+    export function timeLimited(time: TimeSpan) {
         return true;
     }
 
@@ -91,82 +207,146 @@ namespace Conditions {
         EST
     }
 
-    export enum DaysOfWeek {
-        Sunday,
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday
+    export enum daysOfWeekEnum {
+        weekday,
+        weekend,
+        anyday
     }
 
-    //% block="On these days $days from $start to $end in $zone time zone"
-    //% group="Time"
+    //% block="$day" blockId=daysOfWeek group="Unique Predicates"
+     export function DaysOfWeek(day: daysOfWeekEnum) {
+         return false
+     }
+    //% block="$days=daysOfWeek from $start to $end in $zone time zone"
+    //%blockId=daysOfWeekWithTime
+    //% group="Unique Predicates"
     //% start.defl="12:00 AM"
     //% end.defl="12:00 AM"
     //% inlineInputMode=inline
-    export function daysOfWeekWithTime(zone: TimeZone, days: DaysOfWeek[], start: string, end: string) {
-        return false;
+    export function daysOfWeekWithTime(zone: TimeZone, days: daysOfWeekEnum, start: string, end: string): TimeSpan {
+        return undefined;
     }
 
-    //% block="On these days $days at any time of day in $zone time zone"
-    //% group="Time"
-    export function daysOfWeekAnyTime(zone: TimeZone, days: DaysOfWeek[]) {
-        return false;
+    /* BEGIN User Risk */
+    export enum UserRiskLevel {
+        High,
+        Medium,
+        Low,
+        NoRisk
     }
 
-    //% block
+    export class UserRiskCollection {}
+
+    //% block="$riskSettings=riskLevels"
+    //% group="Risk"
+    export function userRisk(riskSettings: UserRiskCollection) {
+        return true;
+    }
+
+    //% block="User risk is: $arg1||or $arg2|or $arg3|or $arg4"
+    //%blockId=riskLevels
     //% inlineInputMode=inline
-    export function dateRange(zone: TimeZone, start: string, end: string) {
-        return false;
+    //% group="Unique Predicates"
+    //% expandableArgumentMode="enabled"
+    export function riskLevels(
+        arg1: UserRiskLevel = UserRiskLevel.High,
+        arg2: UserRiskLevel | null = null,
+        arg3: UserRiskLevel | null = null,
+        arg4: UserRiskLevel | null = null): UserRiskCollection {
+        return undefined;
+    }
+
+    /* BEGIN Device Risk */
+    export enum DeviceRiskLevel {
+        High,
+        Medium,
+        Low,
+        NoRisk
+    }
+
+    export class DeviceRiskCollection {}
+
+    //% block="$deviceRiskSettings=deviceRiskLevels"
+    //% group="Risk"
+    export function deviceRisk(deviceRiskSettings: DeviceRiskCollection) {
+        return true;
+    }
+
+    //% block="Device risk is: $arg1||or $arg2|or $arg3|or $arg4"
+    //%blockId=deviceRiskLevels
+    //% inlineInputMode=inline
+    //% group="Unique Predicates"
+    //% expandableArgumentMode="enabled"
+    export function deviceRiskLevels(
+        arg1: DeviceRiskLevel = DeviceRiskLevel.High,
+        arg2: DeviceRiskLevel | null = null,
+        arg3: DeviceRiskLevel | null = null,
+        arg4: DeviceRiskLevel | null = null): DeviceRiskCollection {
+        return undefined;
     }
 }
-
 
 //% color="#AA278D"
-namespace language {
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="require $arg1" inlineInputMode=external
-    export function require1(arg1: boolean) {
-    }
+//% block="Policy Requirements"
+namespace policyRequirements {
 
     /**
     * This is a statement block with a parameter
     */
-    //% block="require $arg1|else require $arg2" inlineInputMode=external
-    export function require2(arg1: boolean, arg2: boolean) {
+    //% block="require $arg1=requirementsList||or $arg2=requirementsList|or $arg3=requirementsList|or $arg4=requirementsList|or $arg5=requirementsList" inlineInputMode=external group="Access Requirements"
+    //% expandableArgumentMode="enabled"
+    export function requirements(
+        arg1: boolean = false,
+        arg2: boolean = false,
+        arg3: boolean = false,
+        arg4: boolean = false,
+        arg5: boolean = false) {
     }
 
-    /**
-    * This is a statement block with a parameter
-    */
-    //% block="rule $name|when $cond" inlineInputMode=external
-    export function rule(name: string, cond: boolean, body: () => void) {
+    export enum requirementsEnum {
+        //% block="Secure Device"
+        secureDevice,
+        //% block="Secure Application"
+        secureApplication,
+        //% block="Strong Credentials"
+        strongCredentials,
+        //% block="Elevated Monitoring"
+        elevatedMonitoring,
+        //% block="Require Approval"
+        requireApproval,
+        //% block="Notify"
+        requireNotification
     }
+
+    //% block="$requirement" blockId=requirementsList group="Individual Requirement Predicates"
+     export function singleRequirement(requirement: requirementsEnum) {
+         return false
+     }
+
+
+    //% block="a combination of $require1 and $require2||and $require3|and $require4" group="Individual Requirement Predicates"
+    //% inlineInputMode=inline
+    //% expandableArgumentMode="enabled"
+    export function and(
+        require1: requirementsEnum,
+        require2: requirementsEnum,
+        require3: requirementsEnum = null,
+        require4: requirementsEnum = null): boolean {
+        return false;
+    }
+
 }
 
-//% color="#0027AA"
-namespace duration {
-    export enum Unit {
-        Hours,
-        Days
+//% block="Outcomes"
+namespace policyOutcomes {
+
+    //% block="allow" group="Outcomes"
+    //% color="#09f018"
+    export function allow() {
     }
 
-    //% block
-    export function frequency(value: number, unit: Unit) {
-    }
-
-    export enum Persistance {
-        Always,
-        Never
-    }
-
-    //% block
-    export function persist(value: Persistance) {
+    //% block="block" blockId=denyAccess group="Outcomes"
+    //% color="#e40c2b"
+    export function denyAccess() {
     }
 }
-
-// TODO: Session "Use app enforced restirctions" and "Use Conditional Access App Control"
