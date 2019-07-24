@@ -118,10 +118,11 @@ namespace predicate {
         Any
     }
 
-    //% block="perform $action||on $count|$item|within $within" group="Data Action"
+    //% block="$user||performs $action|on $count|$item|within $within" group="Data Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function dataAction(
+        user: UserType,
         action: Actions,
         count: ActionScale = null,
         item: DataTarget = null,
@@ -147,10 +148,11 @@ namespace predicate {
         Any
     }
 
-    //% block="perform $action||on $count|$item|within $within" group="Admin Action"
+    //% block="$user||performs $action|on $count|$item|within $within" group="Admin Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function adminAction(
+        user: UserType,
         action: Actions,
         count: ActionScale = null,
         item: AdminTarget = null,
