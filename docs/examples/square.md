@@ -3,10 +3,14 @@
 A simple example
 
 ```blocks
-loops.forever(function () {
-    for (let i = 0; i < 4; i++) {
-        turtle.forward(1)
-        turtle.turn(Direction.Left, 90)
+if (predicate.adminAction(adminUserType.GlobalAdmin)) {
+    policyRequirements.requirements(
+    policyRequirements.and(requirementsEnum.strongCredentials, requirementsEnum.elevatedMonitoring)
+    )
+    if (predicate.from(predicate.fromOr(NamedNetwork.OffCorp))) {
+        policyRequirements.requirements(
+        policyRequirements.singleRequirement(requirementsEnum.secureDevice)
+        )
     }
-})
+}
 ```

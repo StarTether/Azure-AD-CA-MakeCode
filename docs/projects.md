@@ -3,13 +3,18 @@
 ```codecard
 [
     {
-        "name": "Examples",
+        "name": "Simple policy samples to get you started",
         "url": "/examples"
+    },
+    {
+        "name": "More sophisticated policy samples",
+        "url": "/sophisticated_examples"
     }
 ]
 ```
 
 ## See Also
 
-[Examples](/examples)
+[Simple policy samples to get you started](/examples),
+[More sophisticated policy samples](/sophisticated_examples)
 

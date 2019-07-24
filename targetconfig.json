@@ -6,6 +6,7 @@
         ]
     },
     "galleries": {
-        "Examples": "examples"
+        "Simple policy samples to get you started": "examples",
+        "More sophisticated policy samples": "sophisticated_examples"
     }
 }

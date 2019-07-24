@@ -1,101 +1,157 @@
+enum regularUserType {
+    Employee,
+    //% block="External Collaborator"
+    Guest,
+    Contractor,
+    Vendor,
+    //% block="First Line Worker"
+    FirstLine,
+    Customer
+}
+enum adminUserType {
+    //% block="Global Administrator"
+    GlobalAdmin,
+    //% block="User Administrator"
+    UserAdmin,
+    //% block="Policy Administrator"
+    PolicyAdmin,
+    //% block="Application Administrator"
+    ApplicationAdmin,
+    //% block="Security Administrator"
+    SecurityAdmin
+}
+//% color="#00278D"
+enum Actions {
+  //% block="Any Action"
+    Any,
+    View,
+    Create,
+    Update,
+    Download,
+    Delete
+}
+//% color="#00278D"
+enum Scale {
+    //% block="Any number of"
+    Any,
+    One,
+    Many
+}
+//% color="#00278D"
+enum ActionType {
+    //% block="Data Action"
+    DataTask,
+    //% block="Admin Task"
+    AdminTask
+}
+//% color="#00278D"
+enum DataTarget {
+    //% block="Resources"
+    Any,
+    File,
+    Email,
+    IM,
+    Other
+}
+//% color="#00278D"
+enum DataScope {
+    M365,
+    Salesforce,
+    Box,
+    PowerBI,
+    //% block="Any Application"
+    Any
+}
+//% color="#00278D"
+enum AdminTarget {
+    //% block="Any Admin Task"
+    Any,
+    //% block="A User Account"
+    UserAccounts,
+    //% block="An Identity Admin Operation"
+    Identity,
+    //% block="A Policy Admin Operation"
+    Policy,
+    //% block="Any Application"
+    Apps
+}
+//% color="#00278D"
+enum AdminScope {
+    M365,
+    //% block="Azure Active Directory"
+    AzureAD,
+    //% block="Any Context"
+    Any
+}
+
+enum NamedNetwork {
+    //% block="Trusted Locations"
+    TrustedLocations,
+    //% block="Outside Work"
+    OffCorp,
+    //% block="Untrusted Locations"
+    UntrustedLocations,
+    //% block="Uncharacteristic Locations"
+    RiskyLocations,
+    //% block="From Disallowed Countries"
+    DisallowedCountries
+}
+
+enum TimeZone {
+    PST,
+    MST,
+    CST,
+    EST
+}
+
+enum daysOfWeekEnum {
+    weekday,
+    weekend,
+    anyday
+}
+
+enum UserRiskLevel {
+    High,
+    Medium,
+    Low,
+    NoRisk
+}
+
+enum DeviceRiskLevel {
+    High,
+    Medium,
+    Low,
+    NoRisk
+}
+
+enum requirementsEnum {
+    //% block="Secure Device"
+    secureDevice,
+    //% block="Secure Application"
+    secureApplication,
+    //% block="Strong Credentials"
+    strongCredentials,
+    //% block="Elevated Monitoring"
+    elevatedMonitoring,
+    //% block="Require Approval"
+    requireApproval,
+    //% block="Notify"
+    requireNotification
+}
+
 //% color="#00278D"
 //% block="Access Details"
 namespace predicate {
-    export enum regularUserType {
-        Employee,
-        //% block="External Collaborator"
-        Guest,
-        Contractor,
-        Vendor,
-        //% block="First Line Worker"
-        FirstLine,
-        Customer
-    }
-    export enum adminUserType {
-        //% block="Global Administrator"
-        GlobalAdmin,
-        //% block="User Administrator"
-        UserAdmin,
-        //% block="Policy Administrator"
-        PolicyAdmin,
-        //% block="Application Administrator"
-        ApplicationAdmin,
-        //% block="Security Administrator"
-        SecurityAdmin
-    }
-    //% color="#00278D"
-    export enum Actions {
-      //% block="Any Action"
-        Any,
-        View,
-        Create,
-        Update,
-        Download,
-        Delete
-    }
-    //% color="#00278D"
-    export enum Scale {
-        //% block="Any number of"
-        Any,
-        One,
-        Many
-    }
-    //% color="#00278D"
-    export enum ActionType {
-        //% block="Data Action"
-        DataTask,
-        //% block="Admin Task"
-        AdminTask
-    }
-    //% color="#00278D"
-    export enum DataTarget {
-        //% block="Resources"
-        Any,
-        File,
-        Email,
-        IM,
-        Other
-    }
-    //% color="#00278D"
-    export enum DataScope {
-        M365,
-        Salesforce,
-        Box,
-        PowerBI,
-        //% block="Any Application"
-        Any
-    }
-    //% color="#00278D"
-    export enum AdminTarget {
-        //% block="Any Admin Task"
-        Any,
-        //% block="A User Account"
-        UserAccounts,
-        //% block="An Identity Admin Operation"
-        Identity,
-        //% block="A Policy Admin Operation"
-        Policy,
-        //% block="Any Application"
-        Apps
-    }
-    //% color="#00278D"
-    export enum AdminScope {
-        M365,
-        //% block="Azure Active Directory"
-        AzureAD,
-        //% block="Any Context"
-        Any
-    }
 
     //% block="User = $user||performs $action |on $count $item|within $within" group="Data Action"
     //% inlineInputMode=inline
     //% expandableArgumentMode="enabled"
     export function dataAction(
         user: regularUserType,
-        action: Actions,
-        count: Scale = null,
-        item: DataTarget = null,
-        within: DataScope = null) {
+        action?: Actions,
+        count?: Scale,
+        item?: DataTarget,
+        within?: DataScope) {
         return true;
     }
 
@@ -104,8 +160,8 @@ namespace predicate {
     //% expandableArgumentMode="enabled"
     export function adminAction(
         user: adminUserType,
-        item: AdminTarget = null,
-        within: AdminScope = null) {
+        item?: AdminTarget,
+        within?: AdminScope) {
         return true;
     }
 
@@ -157,18 +213,6 @@ namespace predicate {
     }
 
   /* BEGIN Location */
-  export enum NamedNetwork {
-      //% block="Trusted Locations"
-      TrustedLocations,
-      //% block="Outside Work"
-      OffCorp,
-      //% block="Untrusted Locations"
-      UntrustedLocations,
-      //% block="Uncharacteristic Locations"
-      RiskyLocations,
-      //% block="From Disallowed Countries"
-      DisallowedCountries
-  }
 
   export class Location {}
 
@@ -186,9 +230,9 @@ namespace predicate {
   //% group="Unique Predicates"
   export function fromOr(
       location1: NamedNetwork,
-      location2: NamedNetwork,
-      location3: NamedNetwork,
-      location4: NamedNetwork): Location {
+      location2?: NamedNetwork,
+      location3?: NamedNetwork,
+      location4?: NamedNetwork): Location {
       return undefined;
   }
 
@@ -200,18 +244,6 @@ namespace predicate {
         return true;
     }
 
-    export enum TimeZone {
-        PST,
-        MST,
-        CST,
-        EST
-    }
-
-    export enum daysOfWeekEnum {
-        weekday,
-        weekend,
-        anyday
-    }
 
     //% block="$day" blockId=daysOfWeek group="Unique Predicates"
      export function DaysOfWeek(day: daysOfWeekEnum) {
@@ -228,12 +260,6 @@ namespace predicate {
     }
 
     /* BEGIN User Risk */
-    export enum UserRiskLevel {
-        High,
-        Medium,
-        Low,
-        NoRisk
-    }
 
     export class UserRiskCollection {}
 
@@ -250,19 +276,13 @@ namespace predicate {
     //% expandableArgumentMode="enabled"
     export function riskLevels(
         arg1: UserRiskLevel = UserRiskLevel.High,
-        arg2: UserRiskLevel | null = null,
-        arg3: UserRiskLevel | null = null,
-        arg4: UserRiskLevel | null = null): UserRiskCollection {
+        arg2?: UserRiskLevel,
+        arg3?: UserRiskLevel,
+        arg4?: UserRiskLevel): UserRiskCollection {
         return undefined;
     }
 
     /* BEGIN Device Risk */
-    export enum DeviceRiskLevel {
-        High,
-        Medium,
-        Low,
-        NoRisk
-    }
 
     export class DeviceRiskCollection {}
 
@@ -279,9 +299,9 @@ namespace predicate {
     //% expandableArgumentMode="enabled"
     export function deviceRiskLevels(
         arg1: DeviceRiskLevel = DeviceRiskLevel.High,
-        arg2: DeviceRiskLevel | null = null,
-        arg3: DeviceRiskLevel | null = null,
-        arg4: DeviceRiskLevel | null = null): DeviceRiskCollection {
+        arg2?: DeviceRiskLevel,
+        arg3?: DeviceRiskLevel,
+        arg4?: DeviceRiskLevel): DeviceRiskCollection {
         return undefined;
     }
 }
@@ -303,20 +323,6 @@ namespace policyRequirements {
         arg5: boolean = false) {
     }
 
-    export enum requirementsEnum {
-        //% block="Secure Device"
-        secureDevice,
-        //% block="Secure Application"
-        secureApplication,
-        //% block="Strong Credentials"
-        strongCredentials,
-        //% block="Elevated Monitoring"
-        elevatedMonitoring,
-        //% block="Require Approval"
-        requireApproval,
-        //% block="Notify"
-        requireNotification
-    }
 
     //% block="$requirement" blockId=requirementsList group="Individual Requirement Predicates"
      export function singleRequirement(requirement: requirementsEnum) {
