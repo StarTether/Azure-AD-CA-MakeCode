@@ -3,10 +3,11 @@
 A simple example
 
 ```blocks
-loops.forever(function () {
-    for (let i = 0; i < 4; i++) {
-        turtle.forward(4)
-        turtle.turn(Direction.Left, 90)
+if (predicate.dataAction(regularUserType.FirstLine)) {
+    if (predicate.timeLimited(predicate.daysOfWeekWithTime(TimeZone.PST, daysOfWeekEnum.weekday, "09:00 AM", "05:00 PM"))) {
+        policyOutcomes.allow()
+    } else {
+        policyOutcomes.denyAccess()
     }
-})
+}
 ```
