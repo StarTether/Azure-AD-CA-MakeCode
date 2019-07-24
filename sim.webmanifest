@@ -1,0 +1,12 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "name": "CaMakeCode",
+  "short_name": "CaMakeCode",
+  "background_color": "#FAFAFA",
+  "icons": [],
+  "scope": "/",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape"
+}

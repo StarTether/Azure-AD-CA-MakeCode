@@ -1,1 +1,208 @@
-Under construction.
+<!DOCTYPE html>
+<html lang="en" manifest="/Azure-AD-CA-MakeCode/release.manifest" data-framework="typescript">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+    
+<!-- include appmeta.html -->
+
+<!-- include robotsmeta.html -->
+
+<!-- end include robotsmeta.html -->
+
+<title>MakeCode Editor for Azure AD Conditional Access Policies</title>
+<meta name="description" content="" />
+<link rel="manifest" href="/Azure-AD-CA-MakeCode/sim.webmanifest">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MakeCode Editor for Azure AD Conditional Access Policies">
+<meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+<meta name="format-detection" content="telephone=no">
+<meta name="application-name" content="MakeCode Editor for Azure AD Conditional Access Policies">
+
+<meta name="msapplication-TileColor" content="">
+<meta name="msapplication-TileImage" content="">
+<meta name="msapplication-config" content="none"/>
+<meta name="theme-color" content="">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:title" content="MakeCode Editor for Azure AD Conditional Access Policies" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+
+<meta property="og:title" content="MakeCode Editor for Azure AD Conditional Access Policies" />
+<meta property="og:site_name" content="MakeCode Editor for Azure AD Conditional Access Policies" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<link rel="apple-touch-icon" href="">
+<link rel="icon" type="image/png" href="">
+<link rel="shortcut icon" href="">
+
+<!-- end include appmeta.html -->
+
+
+    <link rel="stylesheet" data-rtl="/Azure-AD-CA-MakeCode/rtlsemantic.css" href="/Azure-AD-CA-MakeCode/semantic.css" type="text/css">
+</head>
+
+<body class="main">
+    <div id='loading' class="ui active dimmer">
+        <div class="ui large main loader"></div>
+    </div>
+
+    <div id='custom-content'>
+    </div>
+
+    <div id="allcontent">
+        <div id="cookiebanner"></div>
+        <div id="editorcontent">
+            <div id='content' class="ui dimmable full-abs">
+            </div>
+        </div>
+    </div>
+
+    <div id='msg' aria-live="polite">
+        <div id='errmsg' class="ui red inverted segment"></div>
+        <div id='warnmsg' class="ui orange inverted segment"></div>
+        <div id='infomsg' class="ui teal inverted segment"></div>
+        <div id='compilemsg' class="ui ignored info message"></div>
+    </div>
+
+    <script>
+        // This line gets patched up by the cloud
+        var pxtConfig = {
+    "relprefix": "/Azure-AD-CA-MakeCode/",
+    "verprefix": "",
+    "workerjs": "/Azure-AD-CA-MakeCode/worker.js",
+    "monacoworkerjs": "/Azure-AD-CA-MakeCode/monacoworker.js",
+    "gifworkerjs": "/Azure-AD-CA-MakeCode/gifjs/gif.worker.js",
+    "pxtVersion": "5.6.4",
+    "pxtRelId": "",
+    "pxtCdnUrl": "/Azure-AD-CA-MakeCode/",
+    "commitCdnUrl": "/Azure-AD-CA-MakeCode/",
+    "blobCdnUrl": "/Azure-AD-CA-MakeCode/",
+    "cdnUrl": "/Azure-AD-CA-MakeCode/",
+    "targetVersion": "0.0.0",
+    "targetRelId": "",
+    "targetUrl": "",
+    "targetId": "camakecode",
+    "simUrl": "/Azure-AD-CA-MakeCode/simulator.html",
+    "partsUrl": "/Azure-AD-CA-MakeCode/siminstructions.html",
+    "runUrl": "/Azure-AD-CA-MakeCode/run.html",
+    "docsUrl": "/Azure-AD-CA-MakeCode/docs.html",
+    "isStatic": true
+};
+    </script>
+    
+<!-- include apptrackingweb.html -->
+<script type="text/javascript" src="/Azure-AD-CA-MakeCode/pxtweb.js"></script>
+<!-- end include apptrackingweb.html -->
+
+    
+<!-- include apptracking.html -->
+<script type="text/javascript">
+    window.loadAppInsights = function (includeCookie) {
+        var appInsights=window.appInsights||function(config){
+            function i(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s="AuthenticatedUserContext",h="start",c="stop",l="Track",a=l+"Event",v=l+"Page",y=u.createElement(o),r,f;y.src=config.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js";u.getElementsByTagName(o)[0].parentNode.appendChild(y);try{t.cookie=u.cookie}catch(p){}for(t.queue=[],t.version="1.0",r=["Event","Exception","Metric","PageView","Trace","Dependency"];r.length;)i("track"+r.pop());return i("set"+s),i("clear"+s),i(h+a),i(c+a),i(h+v),i(c+v),i("flush"),config.disableExceptionTracking||(r="onerror",i("_"+r),f=e[r],e[r]=function(config,i,u,e,o){var s=f&&f(config,i,u,e,o);return s!==!0&&t["_"+r](config,i,u,e,o),s}),t
+        }({
+            instrumentationKey:"9801ed01-c40f-46ec-aa40-2a1742a9e71c",
+            disableAjaxTracking: true,
+            overridePageViewDuration: false,
+            disableExceptionTracking: true,
+            isCookieUseDisabled: !includeCookie,
+            isStorageUseDisabled: !includeCookie,
+            url: "/Azure-AD-CA-MakeCode/ai.0.js"
+        });
+        window.appInsights=appInsights;
+        appInsights.queue.push(function () {
+            appInsights.context.addTelemetryInitializer(function (envelope) {
+                if (typeof pxtConfig === "undefined") return;
+                var telemetryItem = envelope.data.baseData;
+                telemetryItem.properties = telemetryItem.properties || {};
+                telemetryItem.properties["target"] = pxtConfig.targetId;
+                telemetryItem.properties["stage"] = (pxtConfig.relprefix || "/--").replace(/[^a-z]/ig, '')
+                telemetryItem.properties["cookie"] = includeCookie;
+                if (typeof Windows !== "undefined")
+                    telemetryItem.properties["WindowsApp"] = 1;
+                var userAgent = navigator.userAgent.toLowerCase();
+                var userAgentRegexResult = /\belectron\/(\d+\.\d+\.\d+.*?)(?: |$)/i.exec(userAgent); // Example navigator.userAgent: "Mozilla/5.0 Chrome/61.0.3163.100 Electron/2.0.0 Safari/537.36"
+                if (userAgentRegexResult) {
+                    telemetryItem.properties["Electron"] = 1;
+                    telemetryItem.properties["ElectronVersion"] = userAgentRegexResult[1];
+                }
+                if (typeof pxtElectron !== "undefined") {
+                    telemetryItem.properties["PxtElectron"] = 1;
+                    telemetryItem.properties["ElectronVersion"] = pxtElectron.versions.electronVersion;
+                    telemetryItem.properties["ChromiumVersion"] = pxtElectron.versions.chromiumVersion;
+                    telemetryItem.properties["NodeVersion"] = pxtElectron.versions.nodeVersion;
+                    telemetryItem.properties["PxtElectronVersion"] = pxtElectron.versions.pxtElectronVersion;
+                    telemetryItem.properties["PxtCoreVersion"] = pxtElectron.versions.pxtCoreVersion;
+                    telemetryItem.properties["PxtTargetVersion"] = pxtElectron.versions.pxtTargetVersion;
+                    telemetryItem.properties["PxtElectronIsProd"] = pxtElectron.versions.isProd;
+                }
+            });
+        });
+        appInsights.trackPageView(null, scrubUrl(window.location.toString()), {urlReferrer: scrubUrl(document.referrer.toString())});
+
+        //Scrub the key (if any) from the URL.
+        function scrubUrl(url) {
+            var scriptIdRegex = /(?:\d{5}-\d{5}-\d{5}-\d{5})|(?:_[0-9a-zA-Z]{12})/g;
+            return url.replace(scriptIdRegex, "xxxxx-xxxxx-xxxxx-xxxxx");
+        }
+    }
+    pxt.initAnalyticsAsync();
+</script>
+<!-- end include apptracking.html -->
+
+    <script type="text/javascript" src="/Azure-AD-CA-MakeCode/pxtapp.js"></script>
+    <script type="text/javascript" src="/Azure-AD-CA-MakeCode/target.js"></script>
+    <script id="mainscript" type="text/javascript" src="/Azure-AD-CA-MakeCode/main.js"></script>
+    <xml id="blocklyToolboxDefinitionCategory" style="display: none">
+        <!-- An empty category is required so that Blockly launches in category mode -->
+        <category name="">
+        </category>
+    </xml>
+    <xml id="blocklyToolboxDefinitionFlyout" style="display: none">
+    </xml>
+    <script>
+        // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
+        // the default worker url location (used when creating WebWorkers). The problem here is that
+        // HTML5 does not (yet) allow cross-domain web workers, so we need to proxy the instantion of
+        // a web worker through a same-domain script
+        window.MonacoEnvironment = {
+            getWorkerUrl: function(workerId, label) {
+                return pxt.webConfig.monacoworkerjs;
+            }
+        };
+
+        // this get rewritten to blob URLs with SHAs while uploading to the cloud
+        // keep in sync with release.manifest
+        window.MonacoPaths = {
+            "vs/loader": "/Azure-AD-CA-MakeCode/vs/loader.js",
+            "vs/base/worker/workerMain": "/Azure-AD-CA-MakeCode/vs/base/worker/workerMain.js",
+            "vs/basic-languages/src/bat": "/Azure-AD-CA-MakeCode/vs/basic-languages/src/bat.js",
+            "vs/basic-languages/src/cpp": "/Azure-AD-CA-MakeCode/vs/basic-languages/src/cpp.js",
+            "vs/editor/editor.main.css": "/Azure-AD-CA-MakeCode/vs/editor/editor.main.css",
+            "vs/editor/editor.main": "/Azure-AD-CA-MakeCode/vs/editor/editor.main.js",
+            "vs/editor/editor.main.nls": "/Azure-AD-CA-MakeCode/vs/editor/editor.main.nls.js",
+            "vs/language/json/jsonMode": "/Azure-AD-CA-MakeCode/vs/language/json/jsonMode.js",
+            "vs/language/json/jsonWorker": "/Azure-AD-CA-MakeCode/vs/language/json/jsonWorker.js",
+            "vs/language/typescript/lib/typescriptServices": "/Azure-AD-CA-MakeCode/vs/language/typescript/lib/typescriptServices.js",
+            "vs/language/typescript/src/mode": "/Azure-AD-CA-MakeCode/vs/language/typescript/src/mode.js",
+            "vs/language/typescript/src/worker": "/Azure-AD-CA-MakeCode/vs/language/typescript/src/worker.js",
+            "lzma/lzma_worker-min.js": "/Azure-AD-CA-MakeCode/lzma/lzma_worker-min.js",
+            "smoothie/smoothie_compressed.js": "/Azure-AD-CA-MakeCode/smoothie/smoothie_compressed.js",
+            "pxtblockly.js": "/Azure-AD-CA-MakeCode/pxtblockly.js",
+            "blockly.css": "/Azure-AD-CA-MakeCode/blockly.css",
+            "rtlblockly.css": "/Azure-AD-CA-MakeCode/rtlblockly.css",
+            "gifjs/gif.js": "/Azure-AD-CA-MakeCode/gifjs/gif.js"
+        }
+    </script>
+</body>
+
+</html>

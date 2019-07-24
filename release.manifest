@@ -1,0 +1,69 @@
+CACHE MANIFEST
+
+CACHE:
+/Azure-AD-CA-MakeCode/semantic.js
+/Azure-AD-CA-MakeCode/main.js
+/Azure-AD-CA-MakeCode/pxtapp.js
+/Azure-AD-CA-MakeCode/typescript.js
+/Azure-AD-CA-MakeCode/marked/marked.min.js
+/Azure-AD-CA-MakeCode/highlight.js/highlight.pack.js
+/Azure-AD-CA-MakeCode/jquery.js
+/Azure-AD-CA-MakeCode/pxtlib.js
+/Azure-AD-CA-MakeCode/pxtcompiler.js
+/Azure-AD-CA-MakeCode/pxtblockly.js
+/Azure-AD-CA-MakeCode/pxtwinrt.js
+/Azure-AD-CA-MakeCode/pxteditor.js
+/Azure-AD-CA-MakeCode/pxtsim.js
+/Azure-AD-CA-MakeCode/pxtembed.js
+/Azure-AD-CA-MakeCode/pxtworker.js
+/Azure-AD-CA-MakeCode/pxtweb.js
+/Azure-AD-CA-MakeCode/blockly.css
+/Azure-AD-CA-MakeCode/semantic.css
+/Azure-AD-CA-MakeCode/rtlsemantic.css
+
+
+
+
+
+# blockly
+/Azure-AD-CA-MakeCode/blockly/media/sprites.png
+/Azure-AD-CA-MakeCode/blockly/media/click.mp3
+/Azure-AD-CA-MakeCode/blockly/media/disconnect.wav
+/Azure-AD-CA-MakeCode/blockly/media/delete.mp3
+
+# monaco; keep in sync with webapp/public/index.html
+/Azure-AD-CA-MakeCode/vs/loader.js
+/Azure-AD-CA-MakeCode/vs/base/worker/workerMain.js
+/Azure-AD-CA-MakeCode/vs/basic-languages/src/bat.js
+/Azure-AD-CA-MakeCode/vs/basic-languages/src/cpp.js
+/Azure-AD-CA-MakeCode/vs/editor/editor.main.css
+/Azure-AD-CA-MakeCode/vs/editor/editor.main.js
+/Azure-AD-CA-MakeCode/vs/editor/editor.main.nls.js
+/Azure-AD-CA-MakeCode/vs/language/json/jsonMode.js
+/Azure-AD-CA-MakeCode/vs/language/json/jsonWorker.js
+/Azure-AD-CA-MakeCode/vs/language/typescript/lib/typescriptServices.js
+/Azure-AD-CA-MakeCode/vs/language/typescript/src/mode.js
+/Azure-AD-CA-MakeCode/vs/language/typescript/src/worker.js
+
+# charts
+/Azure-AD-CA-MakeCode/smoothie/smoothie_compressed.js
+/Azure-AD-CA-MakeCode/images/Bars_black.gif
+
+# gifjs
+/Azure-AD-CA-MakeCode/gifjs/gif.js
+
+# ai
+/Azure-AD-CA-MakeCode/ai.0.js
+
+/Azure-AD-CA-MakeCode/worker.js
+/Azure-AD-CA-MakeCode/monacoworker.js
+
+# ver Wed Jul 24 2019 15:31:15 GMT-0700 (Pacific Daylight Time)
+
+# target
+/Azure-AD-CA-MakeCode/docs\static\hero.png
+
+/Azure-AD-CA-MakeCode/target.js
+  
+NETWORK:
+*

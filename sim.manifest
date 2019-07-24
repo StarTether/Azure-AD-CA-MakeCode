@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+CACHE:
+/Azure-AD-CA-MakeCode/bluebird.min.js
+/Azure-AD-CA-MakeCode/pxtsim.js
+/Azure-AD-CA-MakeCode/sim.js
+/Azure-AD-CA-MakeCode/sim.css
+
+NETWORK:
+*
