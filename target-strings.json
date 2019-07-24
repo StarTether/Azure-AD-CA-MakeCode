@@ -2,6 +2,7 @@
   "About": "About",
   "CaMakeCode": "CaMakeCode",
   "Docs": "Docs",
-  "Examples": "Examples",
-  "MakeCode Editor for Azure AD Conditional Access Policies": "MakeCode Editor for Azure AD Conditional Access Policies"
+  "MakeCode Editor for Microsoft Conditional Access Policies": "MakeCode Editor for Microsoft Conditional Access Policies",
+  "More sophisticated policy samples": "More sophisticated policy samples",
+  "Simple policy samples to get you started": "Simple policy samples to get you started"
 }

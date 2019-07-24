@@ -287,7 +287,7 @@
   ],
   "embedUrl": "http://microsoft.github.io/pxt-sample/",
   "id": "camakecode",
-  "title": "MakeCode Editor for Azure AD Conditional Access Policies",
+  "title": "MakeCode Editor for Microsoft Conditional Access Policies",
   "name": "CaMakeCode",
   "htmlDocIncludes": {}
 }

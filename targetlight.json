@@ -1,7 +1,7 @@
 {
   "id": "camakecode",
   "name": "CaMakeCode",
-  "title": "MakeCode Editor for Azure AD Conditional Access Policies",
+  "title": "MakeCode Editor for Microsoft Conditional Access Policies",
   "corepkg": "core",
   "cloud": {
     "workspace": false,
@@ -17,7 +17,8 @@
     "listsBlocks": false
   },
   "simulator": {
-    "autoRun": true
+    "autoRun": true,
+    "headless": true
   },
   "versions": {
     "target": "2.0.2",
