@@ -8,5 +8,4 @@ if (predicate.from(predicate.fromOr(NamedNetwork.OffCorp))) {
     policyRequirements.singleRequirement(requirementsEnum.strongCredentials)
     )
 }
-
 ```
