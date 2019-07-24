@@ -347,5 +347,3 @@ namespace policyOutcomes {
     export function denyAccess() {
     }
 }
-
-// TODO: Session "Use app enforced restrictions" and "Use Conditional Access App Control"
