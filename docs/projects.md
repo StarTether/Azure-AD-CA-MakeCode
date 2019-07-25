@@ -9,7 +9,8 @@
     },
     {
         "name": "More sophisticated policy samples",
-        "url": "/sophisticated_examples"
+        "url": "/sophisticated_examples",
+        "imageUrl": "/docs/static/Example1.png"
     }
 ]
 ```

@@ -12,10 +12,10 @@ Here are some fun programs for your @boardname@!
   "imageUrl": "/docs/static/Example1.png",
   "cardType": "example"
 }, {
-  "name": "Avoid FLW over-time",
-  "description": "This simple policy will block First Line Workers from logging in beyond their 9a to 5p weekday work hours, so FLWs can maintain work hours and customers do not have to worry about being responsible for over-time pay.",
+  "name": "Avoid overtime for FLWs",
+  "description": "This simple policy will block First Line Workers from logging in beyond their 9a to 5p weekday work hours, so FLWs can maintain work hours and customers do not have to worry about being responsible for overtime pay.",
   "url": "/examples/square2",
-  "imageUrl": "/docs/static/Example2.png",
+  "imageUrl": "/docs/static/Example1.png",
   "cardType": "example"
 }]
 ```
