@@ -4,11 +4,13 @@
 [
     {
         "name": "Simple policy samples to get you started",
-        "url": "/examples"
+        "url": "/examples",
+        "imageUrl": "/static/Example1.png"
     },
     {
         "name": "More sophisticated policy samples",
-        "url": "/sophisticated_examples"
+        "url": "/sophisticated_examples",
+        "imageUrl": "/static/Example1.png"
     }
 ]
 ```

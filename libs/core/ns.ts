@@ -48,7 +48,7 @@ enum ActionType {
 enum DataTarget {
     //% block="Resources"
     Any,
-    File,
+    Files,
     Email,
     IM,
     Other
