@@ -5,12 +5,12 @@
     {
         "name": "Simple policy samples to get you started",
         "url": "/examples",
-        "imageUrl": "/static/Example1.png"
+        "imageUrl": "https://startether.github.io/Azure-AD-CA-MakeCode/docs/static/Example1.png"
     },
     {
         "name": "More sophisticated policy samples",
         "url": "/sophisticated_examples",
-        "imageUrl": "/static/Example1.png"
+        "imageUrl": "https://startether.github.io/Azure-AD-CA-MakeCode/docs/static/Example1.png"
     }
 ]
 ```
