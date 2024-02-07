@@ -33,6 +33,6 @@
     "@types/node": "8.0.53"
   },
   "dependencies": {
-    "pxt-core": "5.*"
+    "pxt-core": "9.*"
   }
 }
